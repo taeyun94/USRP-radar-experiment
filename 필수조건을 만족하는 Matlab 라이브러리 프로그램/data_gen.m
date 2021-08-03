@@ -1,0 +1,11 @@
+function [data_set,min_speed_idx,max_speed_idx,max_dist_idx,min_dist_idx]=data_gen(data_input,speed_axis,distance_axis,speed_grid,distance_grid)
+mid_idx_speed=length(speed_grid)/2;
+min_speed_idx=mid_idx_speed-speed_axis/2+1;
+max_speed_idx=mid_idx_speed+speed_axis/2;
+tmp=data_input(:,min_speed_idx:max_speed_idx);
+mid_idx_dist=length(distance_grid)/2;
+min_dist_idx=mid_idx_dist;
+max_dist_idx=mid_idx_dist-distance_axis+1;
+tmp=tmp(max_dist_idx:min_dist_idx,:);
+data_set=tmp-min(min(tmp));
+data_set=(data_set/max(max(data_set)));
